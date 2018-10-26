@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">User Management</a>
+  <button
+    (click)="toggleNavbar()"
+    class="navbar-toggler"
+    type="button"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{show: showNavbar}">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [ngClass]="{active: isActive('')}">
+        <a
+          class="nav-link"
+          routerLink="/"
+        >
+          Home
+          <span class="sr-only" *ngIf="isActive('')">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" [ngClass]="{active: isActive('user-list')}">
+        <a
+          class="nav-link"
+          routerLink="/user-list"
+        >
+          User List
+          <span class="sr-only" *ngIf="isActive('user-list')">(current)</span>
+        </a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a class="btn btn-primary my-2 my-sm-0" routerLink="/login">Login</a>
+    </form>
+  </div>
+</nav>
