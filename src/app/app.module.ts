@@ -10,13 +10,15 @@ import {AuthService} from './services/auth.service';
 import {UserService} from './services/user.service';
 import {AppInterceptor} from './app.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    UserListComponent
+    UserListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
