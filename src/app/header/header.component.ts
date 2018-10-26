@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
   ) {
   }
+
+  isLogged = AuthService.isLogged;
 
   ngOnInit() {
     this.router.events.pipe(
@@ -35,4 +38,7 @@ export class HeaderComponent implements OnInit {
     this.showNavbar = !this.showNavbar;
   }
 
+  logout() {
+    AuthService.logout();
+  }
 }
