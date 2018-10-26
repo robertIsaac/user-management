@@ -23,7 +23,11 @@
           <span class="sr-only" *ngIf="isActive('')">(current)</span>
         </a>
       </li>
-      <li class="nav-item" [ngClass]="{active: isActive('user-list')}">
+      <li
+        *ngIf="isLogged()"
+        class="nav-item"
+        [ngClass]="{active: isActive('user-list')}"
+      >
         <a
           class="nav-link"
           routerLink="/user-list"
