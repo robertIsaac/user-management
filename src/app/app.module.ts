@@ -11,6 +11,7 @@ import {UserService} from './services/user.service';
 import {AppInterceptor} from './app.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HeaderComponent} from './header/header.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import {HeaderComponent} from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthService,
