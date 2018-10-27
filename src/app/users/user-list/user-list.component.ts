@@ -32,4 +32,8 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.params$.unsubscribe();
   }
 
+  identify(index, user: User) {
+    return user.id;
+  }
+
 }

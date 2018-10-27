@@ -9,6 +9,7 @@ import {User} from '../../classes/user';
 export class SingleUserComponent implements OnInit {
 
   @Input() user: User;
+  @Input() selected: boolean;
 
   constructor() {
   }

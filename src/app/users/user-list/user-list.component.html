@@ -1,6 +1,8 @@
-<div class="row" *ngIf="userList$ | async as userList">
+<div class="row user-list-container my-5" *ngIf="userList$ | async as userList">
   <div [ngClass]="{'col-10': selectedUserId, 'col-12': !selectedUserId}">
-    <app-single-user *ngFor="let user of userList" [user]="user"></app-single-user>
+    <div *ngFor="let user of userList; trackBy:identify" class="single-user-container">
+      <app-single-user [user]="user" [selected]="selectedUserId == user.id"></app-single-user>
+    </div>
   </div>
   <div *ngIf="selectedUserId" class="col-2">
     <app-user-details [userId]="selectedUserId"></app-user-details>
