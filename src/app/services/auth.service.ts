@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   login(credential) {
-    this.httpClient.post(`${environment.ApiUrl}api/login`, credential).subscribe(data => {
+    this.httpClient.post(`${environment.apiUrl}login`, credential).subscribe(data => {
       localStorage.setItem(environment.localStorage.token, data['token']);
       this.router.navigate(['user-list']);
     });

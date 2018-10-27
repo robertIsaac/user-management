@@ -1,10 +1,43 @@
-<div class="row user-list-container my-5" *ngIf="userList$ | async as userList">
+<div class="row user-list-container my-5" *ngIf="userList$ | async as userList; else loading">
+  <div class="m-5 p-5 text-center" *ngIf="!userList.length">no users</div>
   <div [ngClass]="{'col-9': selectedUserId, 'col-12': !selectedUserId}">
     <div *ngFor="let user of userList; trackBy:identify" class="single-user-container">
-      <app-single-user [user]="user" [selected]="selectedUserId == user.id"></app-single-user>
+      <app-single-user
+        [user]="user"
+        [selected]="selectedUserId == user.id"
+        (delete)="delete(user.id, deleteModal)"
+        (update)="update(user.id, updateModal)"
+      ></app-single-user>
     </div>
   </div>
   <div *ngIf="selectedUserId" class="col-3 p-0">
-    <app-user-details [userId]="selectedUserId"></app-user-details>
+    <app-user-details
+      [userId]="selectedUserId"
+      (delete)="delete(selectedUserId, deleteModal)"
+      (update)="update(selectedUserId, updateModal)"
+    ></app-user-details>
   </div>
 </div>
+
+<ng-template #updateModal>
+  <app-update [user$]="updateUser$" (close)="updateRef.hide()"></app-update>
+</ng-template>
+
+<ng-template #deleteModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="deleteRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="deleteUser$ | async as user">
+    <div>are you sure you wanna delete {{user.first_name}} {{user.last_name}}?</div>
+    <div>
+      <button (click)="deleteUser(user.id)" class="btn badge-danger mr-2">yes, delete him</button>
+      <button (click)="deleteRef.hide()" class="btn btn-success">no, cancel</button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #loading>
+  loading
+</ng-template>

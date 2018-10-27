@@ -10,7 +10,7 @@ export class AppInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (request.url === `${environment.ApiUrl}api/login`) {
+    if (request.url === `${environment.apiUrl}login`) {
       return next.handle(request);
     }
     return next.handle(request.clone({

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ApiUrl: 'https://reqres.in/',
+  apiUrl: 'https://reqres.in/api/',
   localStorage: {
     token: 'auth-token',
   },

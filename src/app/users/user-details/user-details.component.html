@@ -1,5 +1,5 @@
 <div class="container-fluid" *ngIf="user$ | async as user">
-  <span class="close">×</span>
+  <span class="close" routerLink="/user-list">×</span>
   <div class="w-100 image-container">
     <img [src]="user.avatar" class="avatar">
   </div>
@@ -7,11 +7,11 @@
     {{user.first_name}} {{user.last_name}}
   </div>
   <div class="edit-delete text-center row">
-    <span class="col p-2 m-3">
+    <span class="col p-2 m-3" (click)="updateUser()">
       <i aria-hidden="true" class="fa fa-pencil"></i>
       edit
     </span>
-    <span class="col p-2 m-3">
+    <span class="col p-2 m-3" (click)="deleteUser()">
       <i aria-hidden="true" class="fa fa-trash"></i>
       delete
     </span>

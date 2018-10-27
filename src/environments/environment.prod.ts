@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  ApiUrl: 'https://reqres.in/',
+  apiUrl: 'https://reqres.in/api/',
   localStorage: {
     token: 'auth-token',
   },
