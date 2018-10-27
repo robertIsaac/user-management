@@ -1,0 +1,25 @@
+<div class="container user-container" [ngClass]="{selected: selected}">
+  <div class="row my-md-3 my-1 py-md-3 py-1">
+    <div class="col-2 col-md-1">
+      <img [src]="user.avatar" class="avatar">
+    </div>
+    <div class="col-5">
+      {{user.first_name}} {{user.last_name}}
+    </div>
+    <div class="col-5 offset-md-1">
+      <div class="icons-container">
+        <span [ngClass]="{'d-none': selected}">
+          <span class="bordered-icon mr-1 mr-sm-2 text-center">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+          <span class="bordered-icon mr-2 mr-sm-5 text-center">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </span>
+        </span>
+        <i class="fa fa-angle-right" aria-hidden="true" [routerLink]="['/user-list', user.id]"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--{{user | json}}-->

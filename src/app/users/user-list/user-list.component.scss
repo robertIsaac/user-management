@@ -1,0 +1,13 @@
+$light-gray: #ccc;
+.user-list-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.single-user-container {
+  border-bottom: 1px solid $light-gray;
+  &:last-child {
+    border: none;
+  }
+}

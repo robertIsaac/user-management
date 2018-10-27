@@ -1,0 +1,45 @@
+@import '../../../variables';
+
+.user-container {
+  color: $font-color;
+  line-height: 40px;
+  border-radius: 10px;
+  transition: 500ms;
+  &:hover {
+    background-color: $hover-color;
+  }
+  &.selected {
+    background-color: $purple;
+    color: white;
+    .fa {
+      color: white;
+    }
+  }
+}
+
+.bordered-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  border: solid 1px $purple;
+  color: $purple;
+  background-color: white;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.fa-angle-right {
+  font-size: 25px;
+  color: $purple;
+  cursor: pointer;
+  outline: none;
+}
+
+.icons-container {
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  right: 10px;
+  line-height: initial;
+}
