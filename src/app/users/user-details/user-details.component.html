@@ -1,3 +1,19 @@
-<div *ngIf="user$ | async as user">
-  {{user | json}}
+<div class="container-fluid" *ngIf="user$ | async as user">
+  <span class="close">×</span>
+  <div class="w-100 image-container">
+    <img [src]="user.avatar" class="avatar">
+  </div>
+  <div class="w-100 text-center">
+    {{user.first_name}} {{user.last_name}}
+  </div>
+  <div class="edit-delete text-center row">
+    <span class="col p-2 m-3">
+      <i aria-hidden="true" class="fa fa-pencil"></i>
+      edit
+    </span>
+    <span class="col p-2 m-3">
+      <i aria-hidden="true" class="fa fa-trash"></i>
+      delete
+    </span>
+  </div>
 </div>

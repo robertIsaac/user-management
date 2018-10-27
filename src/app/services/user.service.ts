@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../classes/user';
 import {filter, map} from 'rxjs/operators';
-import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +48,8 @@ export class UserService {
    * */
   private getUserList() {
     this.userListLoading = true;
-    this.httpClient.get<User[]>(`${environment.ApiUrl}api/users`).subscribe(userList => {
+    this.httpClient.get<User[]>(`assets/a.json`).subscribe(userList => {
+      // this.httpClient.get<User[]>(`${environment.ApiUrl}api/users`).subscribe(userList => {
       this.userListLoaded = true;
       this.userListLoading = false;
       this.userList$.next(userList['data']);

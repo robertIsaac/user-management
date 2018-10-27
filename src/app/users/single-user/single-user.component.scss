@@ -1,20 +1,16 @@
-$hover-color: rgba(142, 68, 173, 0.05);
-;
-$purple: #8e44ad;
-.avatar {
-  width: 100%;
-  border-radius: 50%;
-  border: 1px solid white;
-}
+@import '../../../variables';
 
 .user-container {
+  color: $font-color;
   line-height: 40px;
   border-radius: 10px;
+  transition: 500ms;
   &:hover {
     background-color: $hover-color;
   }
   &.selected {
     background-color: $purple;
+    color: white;
     .fa {
       color: white;
     }
@@ -37,6 +33,7 @@ $purple: #8e44ad;
   font-size: 25px;
   color: $purple;
   cursor: pointer;
+  outline: none;
 }
 
 .icons-container {
