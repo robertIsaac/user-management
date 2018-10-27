@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {Observable} from 'rxjs';
 import {User} from '../../classes/user';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-user-list',
@@ -14,10 +15,15 @@ export class UserListComponent implements OnInit, OnDestroy {
   selectedUserId: number;
   userList$: Observable<User[]>;
   params$;
+  updateUser$;
+  deleteUser$;
+  updateRef: BsModalRef;
+  deleteRef: BsModalRef;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
+    private modalService: BsModalService,
   ) {
   }
 
@@ -36,4 +42,24 @@ export class UserListComponent implements OnInit, OnDestroy {
     return user.id;
   }
 
+  delete(userId: number, template: TemplateRef<any>) {
+    this.deleteUser$ = this.userService.getUser(userId);
+    this.deleteRef = this.openModal(template);
+  }
+
+  update(userId: number, template: TemplateRef<any>) {
+    this.updateUser$ = this.userService.getUser(userId);
+    this.updateRef = this.openModal(template);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    return this.modalService.show(template);
+  }
+
+  deleteUser(userId) {
+    this.userService.delete(userId);
+    this.deleteRef.hide();
+  }
+
 }
+

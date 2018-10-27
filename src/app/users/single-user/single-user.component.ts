@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../classes/user';
 
 @Component({
@@ -10,11 +10,21 @@ export class SingleUserComponent implements OnInit {
 
   @Input() user: User;
   @Input() selected: boolean;
+  @Output() delete: EventEmitter<void> = new EventEmitter();
+  @Output() update: EventEmitter<void> = new EventEmitter();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  deleteUser() {
+    this.delete.emit();
+  }
+
+  updateUser() {
+    this.update.emit();
   }
 
 }

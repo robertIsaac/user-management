@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../classes/user';
 import {filter, map} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -42,17 +43,21 @@ export class UserService {
     );
   }
 
-  /**
-   * load the userList from the api to the BehaviorSubject userList
-   * sets the proper value of loaded and loading during the loading
-   * */
-  private getUserList() {
-    this.userListLoading = true;
-    this.httpClient.get<User[]>(`assets/a.json`).subscribe(userList => {
-      // this.httpClient.get<User[]>(`${environment.ApiUrl}api/users`).subscribe(userList => {
-      this.userListLoaded = true;
-      this.userListLoading = false;
-      this.userList$.next(userList['data']);
+  updateUser(id, value: any) {
+    this.httpClient.put(`${environment.apiUrl}users/${id}`, value).subscribe(data => {
+      const users = this.userList$.getValue();
+      const index = users.findIndex(user => user.id === id);
+      users[index] = Object.assign(users[index], data);
+      this.userList$.next(users);
+      alert('user updated');
+    });
+  }
+
+  delete(userId: number) {
+    console.log(typeof userId);
+    this.httpClient.delete(`${environment.apiUrl}users/${userId}`).subscribe(() => {
+      const users = this.userList$.getValue();
+      this.userList$.next(users.filter(user => user.id !== userId));
     });
   }
 
@@ -63,5 +68,18 @@ export class UserService {
     if (!this.userListLoaded && !this.userListLoading) {
       this.getUserList();
     }
+  }
+
+  /**
+   * load the userList from the api to the BehaviorSubject userList
+   * sets the proper value of loaded and loading during the loading
+   * */
+  private getUserList() {
+    this.userListLoading = true;
+    this.httpClient.get<User[]>(`${environment.apiUrl}users`).subscribe(userList => {
+      this.userListLoaded = true;
+      this.userListLoading = false;
+      this.userList$.next(userList['data']);
+    });
   }
 }
