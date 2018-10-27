@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
-import {UserListComponent} from './user-list/user-list.component';
 import {AuthService} from './services/auth.service';
 import {UserService} from './services/user.service';
 import {AppInterceptor} from './app.interceptor';
@@ -18,8 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    UserListComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

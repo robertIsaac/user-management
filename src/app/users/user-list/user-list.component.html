@@ -1,0 +1,8 @@
+<div class="row" *ngIf="userList$ | async as userList">
+  <div [ngClass]="{'col-10': selectedUserId, 'col-12': !selectedUserId}">
+    <app-single-user *ngFor="let user of userList" [user]="user"></app-single-user>
+  </div>
+  <div *ngIf="selectedUserId" class="col-2">
+    <app-user-details [userId]="selectedUserId"></app-user-details>
+  </div>
+</div>
