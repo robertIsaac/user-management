@@ -1,6 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UserListComponent} from './user-list.component';
+import {SingleUserComponent} from '../single-user/single-user.component';
+import {UserDetailsComponent} from '../user-details/user-details.component';
+import {UpdateComponent} from '../update/update.component';
+import {TestModule} from '../../test/test.module';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -8,7 +12,13 @@ describe('UserListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserListComponent]
+      declarations: [
+        UserListComponent,
+        SingleUserComponent,
+        UserDetailsComponent,
+        UpdateComponent,
+      ],
+      imports: [TestModule]
     })
       .compileComponents();
   }));
