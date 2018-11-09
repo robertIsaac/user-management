@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {LoginGuard} from './login.guard';
-import {TestModule} from '../test/test.module';
+import {TestModule} from '../test.module';
 
 describe('LoginGuard', () => {
   beforeEach(() => {
