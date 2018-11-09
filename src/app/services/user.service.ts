@@ -54,7 +54,6 @@ export class UserService {
   }
 
   delete(userId: number) {
-    console.log(typeof userId);
     this.httpClient.delete(`${environment.apiUrl}users/${userId}`).subscribe(() => {
       const users = this.userList$.getValue();
       this.userList$.next(users.filter(user => user.id !== userId));

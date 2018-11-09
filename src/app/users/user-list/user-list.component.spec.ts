@@ -4,7 +4,7 @@ import {UserListComponent} from './user-list.component';
 import {SingleUserComponent} from '../single-user/single-user.component';
 import {UserDetailsComponent} from '../user-details/user-details.component';
 import {UpdateComponent} from '../update/update.component';
-import {TestModule} from '../../test/test.module';
+import {TestModule} from '../../test.module';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;

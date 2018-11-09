@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {UpdateComponent} from './update.component';
 import {of} from 'rxjs';
 import {User} from '../../classes/user';
-import {TestModule} from '../../test/test.module';
+import {TestModule} from '../../test.module';
 
 describe('UpdateComponent', () => {
   let component: UpdateComponent;

@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SingleUserComponent} from './single-user.component';
 import {User} from '../../classes/user';
-import {TestModule} from '../../test/test.module';
+import {TestModule} from '../../test.module';
 
 describe('SingleUserComponent', () => {
   let component: SingleUserComponent;
